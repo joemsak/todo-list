@@ -29,4 +29,16 @@ RSpec.describe Todo::Item do
     item.set_deadline(due_date)
     expect(item.due_at).to eq(due_date)
   end
+
+  it 'can be initialized with all its data simply' do
+    due_date = Time.now + 1
+    item = described_class.new('Initialize items simply', assignee: 'Morty',
+                                                          due_at: due_date,
+                                                          completed: true)
+
+    expect(item.text).to eq('Initialize items simply')
+    expect(item.assignee).to eq('Morty')
+    expect(item.due_at).to eq(due_date)
+    expect(item).to be_completed
+  end
 end

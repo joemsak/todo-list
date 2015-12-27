@@ -2,8 +2,11 @@ module Todo
   class Item
     attr_reader :text, :assignee, :due_at
 
-    def initialize(text)
+    def initialize(text, args = {})
       @text = text
+      @completed = args[:completed]
+      assign_to(args[:assignee])
+      set_deadline(args[:due_at])
     end
 
     def assign_to(assignee)
