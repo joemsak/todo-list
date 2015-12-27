@@ -1,10 +1,14 @@
 require 'spec_helper'
 
 Todo::Item = Struct.new(:text) do
-  attr_reader :assignee
+  attr_reader :assignee, :due_at
 
   def assign_to(assignee)
     @assignee = assignee
+  end
+
+  def set_deadline(due_date)
+    @due_at = due_date
   end
 
   def mark_complete
@@ -32,5 +36,12 @@ RSpec.describe Todo::Item do
     item = described_class.new('Make items assignable')
     item.assign_to('Rick')
     expect(item.assignee).to eq('Rick')
+  end
+
+  it 'can be given a due date' do
+    item = described_class.new('Give deadlines to items')
+    due_date = Time.now + 1 # same time tomorrow
+    item.set_deadline(due_date)
+    expect(item.due_at).to eq(due_date)
   end
 end
