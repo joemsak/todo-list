@@ -1,4 +1,5 @@
 require "todo/version"
+require "todo/item"
 
 module Todo
   class List

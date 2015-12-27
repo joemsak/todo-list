@@ -1,26 +1,11 @@
 require 'spec_helper'
 
-Todo::Item = Struct.new(:text) do
-  attr_reader :assignee, :due_at
-
-  def assign_to(assignee)
-    @assignee = assignee
-  end
-
-  def set_deadline(due_date)
-    @due_at = due_date
-  end
-
-  def mark_complete
-    @completed = true
-  end
-
-  def completed?
-    @completed ||= false
-  end
-end
-
 RSpec.describe Todo::Item do
+  it 'has text' do
+    item = described_class.new('Here I am')
+    expect(item.text).to eq('Here I am')
+  end
+
   it 'is not completed' do
     item = described_class.new('Write a failing test')
     expect(item).not_to be_completed
