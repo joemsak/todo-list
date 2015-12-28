@@ -16,8 +16,8 @@ describe Todo::List do
   end
 
   it 'lists todo items due today' do
-    today = double(:today, due_at: Date.today)
-    tomorrow = double(:tomorrow, due_at: Date.today + 1)
+    today = double(:today, :due? => true)
+    tomorrow = double(:tomorrow, :due? => false)
 
     list = described_class.new('Show me today', today, tomorrow)
 

@@ -11,7 +11,7 @@ module Todo
     end
 
     def due_today
-      items.select { |i| i.due_at == Date.today }
+      items.select { |i| i.due?(Date.today) }
     end
 
     def assigned_to(assignee)
