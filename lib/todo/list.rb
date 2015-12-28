@@ -11,6 +11,10 @@ module Todo
       @items = items
     end
 
+    def add_item(args = {})
+      @items << Item.new(args.delete(:text), args)
+    end
+
     def due_today
       items.select { |i| i.due?(Date.today) }
     end
