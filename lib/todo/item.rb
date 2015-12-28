@@ -13,8 +13,16 @@ module Todo
       @assignee = assignee
     end
 
+    def assigned_to?(person)
+      assignee.downcase == person.downcase
+    end
+
     def set_deadline(due_date)
       @due_at = due_date
+    end
+
+    def due?(due_date)
+      due_at == due_date
     end
 
     def mark_complete

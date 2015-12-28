@@ -20,14 +20,14 @@ RSpec.describe Todo::Item do
   it 'can be assigned to someone' do
     item = described_class.new('Make items assignable')
     item.assign_to('Rick')
-    expect(item.assignee).to eq('Rick')
+    expect(item).to be_assigned_to('Rick')
   end
 
   it 'can be given a due date' do
     item = described_class.new('Give deadlines to items')
     due_date = Time.now + 1 # same time tomorrow
     item.set_deadline(due_date)
-    expect(item.due_at).to eq(due_date)
+    expect(item).to be_due(due_date)
   end
 
   it 'can be initialized with all its data simply' do
