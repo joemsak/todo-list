@@ -25,8 +25,8 @@ describe Todo::List do
   end
 
   it 'lists todo items for an assignee' do
-    rick = double(:today, assignee: 'Rick')
-    morty = double(:tomorrow, assignee: 'Morty')
+    rick = double(:rick, :assigned_to? => false)
+    morty = double(:morty, :assigned_to? => true)
 
     list = described_class.new('Show me Morty', rick, morty)
 

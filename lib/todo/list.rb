@@ -15,7 +15,7 @@ module Todo
     end
 
     def assigned_to(assignee)
-      items.select { |i| i.assignee.downcase == assignee.downcase }
+      items.select { |i| i.assigned_to?(assignee) }
     end
   end
 end
